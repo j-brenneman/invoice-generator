@@ -11,14 +11,14 @@ var concat = require('gulp-concat');
 
 var path = {
   HTML: 'src/index.html',
-  SASS: ['src/sass/app/main.scss', 'src/sass/app/_colors.scss'],
+  SASS: ['src/sass/app/main.scss', 'src/sass/app/_colors.scss', 'src/sass/app/_sidebar.scss'],
   MINIFIED_OUT: 'build.min.js',
   OUT: 'build.js',
   DEST: 'dist',
   DEST_BUILD: 'dist/build',
   DEST_SRC: 'dist/src',
   DEST_CSS: 'dist/src/css',
-  ENTRY_POINT: './src/js/app.jsx'
+  ENTRY_POINT: './src/js/components/app.jsx'
 };
 
 gulp.task('copy', function () {
