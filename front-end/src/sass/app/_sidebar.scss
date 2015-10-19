@@ -1,0 +1,36 @@
+.sidebar-wrapper {
+  height: 56em;
+  display: inline-block;
+  vertical-align: top;
+  background-color: $secondary-blue;
+  width: 15%;
+  transition: all .4s ease 0s;
+
+  .sidebar-top {
+    height: 3em;
+    background-color: darken($secondary-blue, 15%);
+
+    .sidebar-toggle {
+      float: right;
+      margin: 0.5em;
+      font-size: 20px;
+    }
+
+    .sidebar-toggle:hover {
+      color: $secondary-gray;
+      cursor: pointer;
+    }
+  }
+
+  .sidebar-info {
+    margin: 5%;
+  }
+}
+
+.toggle-closed {
+  width: 3%;
+}
+
+.info-closed {
+  display: none;
+}

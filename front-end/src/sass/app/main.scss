@@ -1,3 +1,16 @@
 @import "../bootstrap-sass/stylesheets/bootstrap";
+@import "../font-awesome-sass/scss/_font-awesome";
 @import "./colors";
 @import "./sidebar";
+
+
+body, html {
+  height: 100%;
+  background-color: $primary-gray;
+}
+
+.invoice-manager {
+  height: 56em;
+  display: inline-block;
+  width: 85%;
+}
