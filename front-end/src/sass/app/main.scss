@@ -2,6 +2,7 @@
 @import "../font-awesome-sass/scss/_font-awesome";
 @import "./colors";
 @import "./sidebar";
+@import "./navbar";
 
 
 body, html {
@@ -13,4 +14,9 @@ body, html {
   height: 56em;
   display: inline-block;
   width: 85%;
+  transition: all .4s ease 0s;
+}
+
+.invoice-manager-full {
+  width: 97%;
 }

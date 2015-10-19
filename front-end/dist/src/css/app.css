@@ -8086,7 +8086,7 @@ button.close {
   width: 15%;
   transition: all 0.4s ease 0s; }
   .sidebar-wrapper .sidebar-top {
-    height: 3em;
+    height: 3.9em;
     background-color: #2a7fa0; }
     .sidebar-wrapper .sidebar-top .sidebar-toggle {
       float: right;
@@ -8096,13 +8096,39 @@ button.close {
       color: #AAAAAA;
       cursor: pointer; }
   .sidebar-wrapper .sidebar-info {
-    margin: 5%; }
+    margin: 5%;
+    transition: all 0.4s ease 0.5s; }
 
 .toggle-closed {
   width: 3%; }
 
 .info-closed {
   display: none; }
+
+.navbar {
+  background-color: #fff;
+  text-align: center; }
+  .navbar .customer-indentifier {
+    display: inline-block;
+    float: left; }
+  .navbar .user-indentifier {
+    display: inline-block;
+    float: right; }
+  .navbar .center-controller {
+    display: inline-block;
+    width: 50%; }
+    .navbar .center-controller h4 {
+      padding: 0.5% 1%;
+      margin: 2%;
+      display: inline-block;
+      border: 2px solid #47A9CF;
+      background-color: #AAAAAA;
+      color: #fff;
+      border-radius: 10%; }
+    .navbar .center-controller h4:hover {
+      color: #922729;
+      cursor: pointer;
+      opacity: 0.6; }
 
 body, html {
   height: 100%;
@@ -8111,4 +8137,8 @@ body, html {
 .invoice-manager {
   height: 56em;
   display: inline-block;
-  width: 85%; }
+  width: 85%;
+  transition: all 0.4s ease 0s; }
+
+.invoice-manager-full {
+  width: 97%; }

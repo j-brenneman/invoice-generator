@@ -7,7 +7,7 @@
   transition: all .4s ease 0s;
 
   .sidebar-top {
-    height: 3em;
+    height: 3.9em;
     background-color: darken($secondary-blue, 15%);
 
     .sidebar-toggle {
@@ -24,7 +24,9 @@
 
   .sidebar-info {
     margin: 5%;
+    transition: all .4s ease .5s;
   }
+
 }
 
 .toggle-closed {

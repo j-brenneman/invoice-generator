@@ -1,0 +1,35 @@
+.navbar {
+  background-color: $white;
+  text-align: center;
+
+  .customer-indentifier {
+    display: inline-block;
+    float: left;
+  }
+
+  .user-indentifier {
+    display: inline-block;
+    float: right;
+  }
+
+  .center-controller {
+    display: inline-block;
+    width: 50%;
+
+    h4 {
+      padding: 0.5% 1%;
+      margin: 2%;
+      display: inline-block;
+      border: 2px solid $secondary-blue;
+      background-color: $secondary-gray;
+      color: $white;
+      border-radius: 10%;
+    }
+
+    h4:hover {
+      color: $secondary-red;
+      cursor: pointer;
+      opacity: 0.6;
+    }
+  }
+}
