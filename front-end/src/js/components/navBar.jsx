@@ -7,8 +7,8 @@ var NavBar = React.createClass({
       <div className="navbar">
         <p className="customer-indentifier">Customer</p>
         <div className="center-controller">
-          <h4>Work History</h4>
-          <h4>New Invoice</h4>
+          <button className="btn btn-primary">Work History</button>
+          <button className="btn btn-primary">New Invoice</button>
         </div>
         <p className="user-indentifier">User</p>
       </div>

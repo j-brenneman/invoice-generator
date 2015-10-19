@@ -7,7 +7,7 @@ var SideBar = React.createClass({
     var sidebarInfo = document.getElementsByClassName('sidebar-info')[0].classList;
     var invoiceManager = document.getElementsByClassName('invoice-manager')[0].classList;
     invoiceManager[1] == 'invoice-manager-full' ? invoiceManager.remove('invoice-manager-full') : invoiceManager.add('invoice-manager-full');
-    sidebarInfo[1] == 'info-closed' ? sidebarInfo.remove('info-closed') : sidebarInfo.add('info-closed');
+    sidebarInfo[1] == 'info-closed' ? setTimeout(function() {sidebarInfo.remove('info-closed')}, 400) : sidebarInfo.add('info-closed');
     sidebarToggle[1] == 'toggle-closed' ? sidebarToggle.remove('toggle-closed') : sidebarToggle.add('toggle-closed');
   },
   render: function () {

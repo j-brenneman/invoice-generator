@@ -1,6 +1,7 @@
 .navbar {
   background-color: $white;
   text-align: center;
+  max-height: 55px;
 
   .customer-indentifier {
     display: inline-block;
@@ -16,20 +17,18 @@
     display: inline-block;
     width: 50%;
 
-    h4 {
+    button {
       padding: 0.5% 1%;
       margin: 2%;
       display: inline-block;
-      border: 2px solid $secondary-blue;
-      background-color: $secondary-gray;
-      color: $white;
-      border-radius: 10%;
+      border: 2px solid $secondary-gray;
+      background-color: $secondary-blue;
     }
 
-    h4:hover {
+    button:hover {
       color: $secondary-red;
-      cursor: pointer;
-      opacity: 0.6;
+      background-color: darken($secondary-blue, 10%);
+      opacity: 0.8;
     }
   }
 }

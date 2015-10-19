@@ -8090,8 +8090,9 @@ button.close {
     background-color: #2a7fa0; }
     .sidebar-wrapper .sidebar-top .sidebar-toggle {
       float: right;
-      margin: 0.5em;
-      font-size: 20px; }
+      margin: 0.6em;
+      font-size: 20px;
+      color: #fff; }
     .sidebar-wrapper .sidebar-top .sidebar-toggle:hover {
       color: #AAAAAA;
       cursor: pointer; }
@@ -8107,7 +8108,8 @@ button.close {
 
 .navbar {
   background-color: #fff;
-  text-align: center; }
+  text-align: center;
+  max-height: 55px; }
   .navbar .customer-indentifier {
     display: inline-block;
     float: left; }
@@ -8117,18 +8119,16 @@ button.close {
   .navbar .center-controller {
     display: inline-block;
     width: 50%; }
-    .navbar .center-controller h4 {
+    .navbar .center-controller button {
       padding: 0.5% 1%;
       margin: 2%;
       display: inline-block;
-      border: 2px solid #47A9CF;
-      background-color: #AAAAAA;
-      color: #fff;
-      border-radius: 10%; }
-    .navbar .center-controller h4:hover {
+      border: 2px solid #AAAAAA;
+      background-color: #47A9CF; }
+    .navbar .center-controller button:hover {
       color: #922729;
-      cursor: pointer;
-      opacity: 0.6; }
+      background-color: #2f8fb4;
+      opacity: 0.8; }
 
 body, html {
   height: 100%;

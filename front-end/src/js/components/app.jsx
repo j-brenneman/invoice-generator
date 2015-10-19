@@ -3,7 +3,8 @@ var appStore = require('../stores/app_store');
 var appActions = require('../actions/app_actions');
 // Child Componets
 var SideBar = require('./sidebar.jsx');
-var NavBar = require('./NavBar.jsx');
+var NavBar = require('./navBar.jsx');
+var NewJob = require('./newJob.jsx');
 
 var App = React.createClass({
 
@@ -13,6 +14,9 @@ var App = React.createClass({
         <SideBar />
         <div className="invoice-manager">
           <NavBar />
+          <div>
+            <NewJob />
+          </div>
         </div>
       </div>
     )
