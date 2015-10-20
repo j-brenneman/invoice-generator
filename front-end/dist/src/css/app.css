@@ -5,6 +5,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+@import url(https://fonts.googleapis.com/css?family=Nobile);
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -8096,9 +8097,45 @@ button.close {
     .sidebar-wrapper .sidebar-top .sidebar-toggle:hover {
       color: #AAAAAA;
       cursor: pointer; }
+  .sidebar-wrapper .new-customer {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background-color: #47A9CF;
+    color: #fff; }
+  .sidebar-wrapper .new-customer:focus {
+    outline-width: 0;
+    text-align: center; }
+  .sidebar-wrapper ::-webkit-input-placeholder {
+    color: #fff;
+    opacity: 0.7;
+    text-align: center; }
+  .sidebar-wrapper input {
+    margin-top: 4%; }
+  .sidebar-wrapper .add-customer {
+    color: #fff;
+    font-size: 18px;
+    float: right;
+    margin-right: 3%;
+    margin-top: 5%; }
+  .sidebar-wrapper .add-customer:hover {
+    color: #2ECC71;
+    cursor: pointer; }
   .sidebar-wrapper .sidebar-info {
     margin: 5%;
     transition: all 0.4s ease 0.5s; }
+    .sidebar-wrapper .sidebar-info .customer-list {
+      margin-top: 10%;
+      margin-left: 6%;
+      list-style: none;
+      color: #fff; }
+      .sidebar-wrapper .sidebar-info .customer-list li {
+        margin: 4%; }
+      .sidebar-wrapper .sidebar-info .customer-list li:hover {
+        cursor: pointer;
+        color: #2ECC71; }
+      .sidebar-wrapper .sidebar-info .customer-list .user-icon {
+        margin-right: 4%;
+        opacity: 0.7; }
 
 .toggle-closed {
   width: 3%; }
@@ -8109,10 +8146,16 @@ button.close {
 .navbar {
   background-color: #fff;
   text-align: center;
-  max-height: 55px; }
+  max-height: 55px;
+  margin: 0; }
   .navbar .customer-indentifier {
     display: inline-block;
-    float: left; }
+    float: left;
+    margin-left: 1%;
+    margin-top: 1%; }
+    .navbar .customer-indentifier span {
+      background-color: #AAAAAA;
+      padding: 20%; }
   .navbar .user-indentifier {
     display: inline-block;
     float: right; }
@@ -8130,9 +8173,57 @@ button.close {
       background-color: #2f8fb4;
       opacity: 0.8; }
 
+.control-bar {
+  border-bottom: 1px solid #47A9CF;
+  padding-bottom: 1%;
+  margin-left: 0;
+  background-color: #CFCFCF;
+  padding-top: 1%;
+  width: 100%; }
+  .control-bar button {
+    background-color: #2f8fb4; }
+  .control-bar .create-work {
+    text-align: center; }
+    .control-bar .create-work .work-entry {
+      margin-left: 10%; }
+  .control-bar .work-history {
+    margin-left: 10%; }
+  .control-bar .invoice {
+    text-align: center; }
+
+.jobs {
+  width: 90%;
+  margin-top: 5%; }
+  .jobs .jobs-info {
+    background-color: #fff; }
+    .jobs .jobs-info th {
+      text-align: center; }
+    .jobs .jobs-info .edit-button:hover {
+      color: #2ECC71;
+      cursor: pointer; }
+    .jobs .jobs-info .check-button {
+      margin: 5%;
+      float: left;
+      vertical-align: top; }
+    .jobs .jobs-info .check-button:hover {
+      color: #2ECC71;
+      cursor: pointer; }
+    .jobs .jobs-info .minus-button {
+      margin: 5%;
+      float: right;
+      vertical-align: bottom; }
+    .jobs .jobs-info .minus-button:hover {
+      color: #922729;
+      cursor: pointer; }
+    .jobs .jobs-info td input {
+      border: 2px solid #47A9CF;
+      padding: 2%;
+      width: 100%; }
+
 body, html {
   height: 100%;
-  background-color: #F3F3F3; }
+  background-color: #F3F3F3;
+  font-family: Nobile; }
 
 .invoice-manager {
   height: 56em;

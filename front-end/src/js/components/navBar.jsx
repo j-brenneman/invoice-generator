@@ -5,9 +5,8 @@ var NavBar = React.createClass({
   render: function () {
     return (
       <div className="navbar">
-        <p className="customer-indentifier">Customer</p>
+        <h4 className="customer-indentifier"><span className="label label-default">{this.props.selectedCustomer ? this.props.selectedCustomer.name : null}</span></h4>
         <div className="center-controller">
-          <button className="btn btn-primary">Work History</button>
           <button className="btn btn-primary">New Invoice</button>
         </div>
         <p className="user-indentifier">User</p>

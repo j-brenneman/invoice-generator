@@ -1,13 +1,17 @@
 @import "../bootstrap-sass/stylesheets/bootstrap";
 @import "../font-awesome-sass/scss/_font-awesome";
+@import url(https://fonts.googleapis.com/css?family=Nobile);
 @import "./colors";
 @import "./sidebar";
 @import "./navbar";
+@import "./controlbar";
 @import "./newjob";
+@import "./jobs";
 
 body, html {
   height: 100%;
   background-color: $primary-gray;
+  font-family: Nobile;
 }
 
 .invoice-manager {

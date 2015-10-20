@@ -1,0 +1,28 @@
+.control-bar {
+  border-bottom: 1px solid $secondary-blue;
+  padding-bottom: 1%;
+  margin-left: 0;
+  background-color: $highlight-gray;
+  padding-top: 1%;
+  width: 100%; 
+
+  button {
+    background-color: darken($secondary-blue, 10%);
+  }
+
+  .create-work {
+    text-align: center;
+
+    .work-entry {
+      margin-left: 10%;
+    }
+  }
+
+  .work-history {
+    margin-left: 10%;
+  }
+
+  .invoice {
+    text-align: center;
+  }
+}

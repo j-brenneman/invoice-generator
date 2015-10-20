@@ -11,7 +11,8 @@ var concat = require('gulp-concat');
 
 var path = {
   HTML: 'src/index.html',
-  SASS: ['src/sass/app/main.scss', 'src/sass/app/_colors.scss', 'src/sass/app/_sidebar.scss', 'src/sass/app/_navbar.scss', 'src/sass/app/_newjob.scss'],
+  SASS: ['src/sass/app/main.scss', 'src/sass/app/_colors.scss', 'src/sass/app/_sidebar.scss', 'src/sass/app/_navbar.scss',
+         'src/sass/app/_newjob.scss', 'src/sass/app/_controlbar.scss', 'src/sass/app/_jobs.scss'],
   MINIFIED_OUT: 'build.min.js',
   OUT: 'build.js',
   DEST: 'dist',

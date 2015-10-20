@@ -1,0 +1,45 @@
+.jobs {
+  width: 90%;
+  margin-top: 5%;
+
+  .jobs-info {
+    background-color: $white;
+
+    th {
+      text-align: center;
+    }
+
+    .edit-button:hover {
+      color: $secondary-green;
+      cursor: pointer;
+    }
+
+    .check-button {
+      margin: 5%;
+      float: left;
+      vertical-align: top;
+    }
+
+    .check-button:hover {
+      color: $secondary-green;
+      cursor: pointer;
+    }
+
+    .minus-button {
+      margin: 5%;
+      float: right;
+      vertical-align: bottom;
+    }
+
+    .minus-button:hover {
+      color: $secondary-red;
+      cursor: pointer;
+    }
+
+    td input {
+      border: 2px solid $secondary-blue;
+      padding: 2%;
+      width: 100%;
+    }
+  }
+}

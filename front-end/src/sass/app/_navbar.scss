@@ -2,10 +2,18 @@
   background-color: $white;
   text-align: center;
   max-height: 55px;
+  margin: 0;
 
   .customer-indentifier {
     display: inline-block;
     float: left;
+    margin-left: 1%;
+    margin-top: 1%;
+
+     span {
+       background-color: $secondary-gray;
+       padding: 20%;
+     }
   }
 
   .user-indentifier {

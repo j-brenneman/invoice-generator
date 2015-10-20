@@ -23,9 +23,65 @@
     }
   }
 
+  .new-customer {
+    border: none;
+    border-bottom: 1px solid $white;
+    background-color: $secondary-blue;
+    color: $white;
+  }
+
+  .new-customer:focus {
+    outline-width: 0;
+    text-align: center;
+  }
+
+  ::-webkit-input-placeholder {
+    color: $white;
+    opacity: 0.7;
+    text-align: center;
+  }
+
+  input {
+    margin-top: 4%;
+  }
+
+  .add-customer {
+    color: $white;
+    font-size: 18px;
+    float: right;
+    margin-right: 3%;
+    margin-top: 5%;
+  }
+
+  .add-customer:hover {
+    color: $secondary-green;
+    cursor: pointer;
+  }
+
   .sidebar-info {
     margin: 5%;
     transition: all .4s ease .5s;
+
+    .customer-list {
+      margin-top: 10%;
+      margin-left: 6%;
+      list-style: none;
+      color: $white;
+
+      li {
+        margin: 4%;
+      }
+
+      li:hover {
+        cursor: pointer;
+        color: $secondary-green;
+      }
+
+      .user-icon {
+        margin-right: 4%;
+        opacity: 0.7;
+      }
+    }
   }
 
 }
