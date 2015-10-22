@@ -31,6 +31,18 @@ var appActions = {
       actionType: appConstants.DELETE_JOB,
       data: index
     })
+  },
+  addWorkEntry: function (workEntry) {
+    AppDispatcher.handleViewAction({
+      actionType: appConstants.ADD_WORK_ENRTY,
+      data: workEntry
+    })
+  },
+  jobANDworkToggle: function (boolean) {
+    AppDispatcher.handleViewAction({
+      actionType: appConstants.JOB_AND_WORK_TOGGLE,
+      data: boolean
+    })
   }
 }
 

@@ -8,6 +8,8 @@ var NavBar = require('./navBar.jsx');
 var ControlBar = require('./controlBar.jsx');
 var Jobs = require('./jobs.jsx');
 var NewJob = require('./newJob.jsx');
+var NewWorkEntry = require('./newWorkEntry.jsx');
+var WorkEntries = require('./workEntries.jsx');
 
 
 var App = React.createClass({
@@ -43,16 +45,36 @@ var App = React.createClass({
       appActions.deleteJob(index);
     }
   },
+  workEntryHandlers: {
+    addWorkEntry: function (workEntry) {
+      appActions.addWorkEntry(workEntry);
+    }
+  },
+  toggle: {
+    jobANDworkToggle: function (boolean) {
+      appActions.jobANDworkToggle(boolean);
+    }
+  },
   render: function () {
     return (
       <div>
         <SideBar customers={this.state.customers} handlers={this.sideBarHandlers} />
         <div className="invoice-manager">
           <NavBar selectedCustomer={this.state.selectedCustomer} />
-          <ControlBar />
+          <ControlBar handlers={this.toggle} />
           <div className="new-job text-center col-md-6">
-            <NewJob handlers={this.jobHandlers} selectedCustomer={this.state.selectedCustomer} />
-            <Jobs handlers={this.jobHandlers} jobs={this.state.jobs} selectedCustomer={this.state.selectedCustomer} />
+            {this.state.jobANDworkToggle
+             ? <div>
+                <NewJob handlers={this.jobHandlers} selectedCustomer={this.state.selectedCustomer} />
+                <Jobs handlers={this.jobHandlers} jobs={this.state.jobs} selectedCustomer={this.state.selectedCustomer} />
+               </div>
+             : <div>
+                <NewWorkEntry stateData={this.state} handlers={this.workEntryHandlers}/>
+                <WorkEntries handlers={this.workEntryHandlers} workEntries={this.state.workEntries} jobs={this.state.jobs} selectedCustomer={this.state.selectedCustomer} />
+               </div>
+            }
+          </div>
+          <div className="text-center col-md-6">
           </div>
         </div>
       </div>

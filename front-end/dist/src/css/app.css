@@ -8220,13 +8220,24 @@ button.close {
       padding: 2%;
       width: 100%; }
 
+.work-entry h3 {
+  margin-bottom: 0; }
+
+.work-entry .entry-date {
+  margin-bottom: 1%; }
+  .work-entry .entry-date span {
+    background-color: #AAAAAA;
+    font-size: 14px; }
+
+.work-entry .job-list {
+  text-align: center; }
+
 body, html {
   height: 100%;
   background-color: #F3F3F3;
   font-family: Nobile; }
 
 .invoice-manager {
-  height: 56em;
   display: inline-block;
   width: 85%;
   transition: all 0.4s ease 0s; }

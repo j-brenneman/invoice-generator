@@ -1,0 +1,19 @@
+.work-entry {
+
+  h3 {
+    margin-bottom: 0;
+  }
+
+  .entry-date {
+    margin-bottom: 1%;
+
+    span {
+      background-color: $secondary-gray;
+      font-size: 14px;
+    }
+  }
+
+  .job-list {
+    text-align: center;
+  }
+}
