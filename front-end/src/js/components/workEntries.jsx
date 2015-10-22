@@ -12,7 +12,7 @@ var WorkEntries = React.createClass({
   },
   getCustomerWorkEntries: function () {
     return this.props.workEntries.filter(function (workEntry) {
-      if(workEntry.customer._id === this.props.selectCustomer){
+      if(workEntry.customer._id === this.props.selectedCustomer._id){
         return workEntry.job = this.props.jobs.filter(function (job) {
           if(job._id === workEntry.job){
             return job;

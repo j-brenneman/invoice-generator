@@ -19,6 +19,7 @@ var appState = {
 function Customer(name) {
   this.name = name;
   this._id = JSON.stringify(new UUID(1));
+  this.booyah = 'hello';
 }
 
 function Job(job) {
@@ -39,6 +40,7 @@ function WorkEntry(workEntry) {
 
 // Cutomer add/delete
 var addCustomer = function (name) {
+  console.log('it worked');
   var customer = new Customer(name);
   appState.customers.push(customer);
   appState.selectedCustomer = customer;
