@@ -1,0 +1,34 @@
+.invoiceView {
+  margin: 5%;
+  border: 1px solid $secondary-gray;
+  background-color: $white;
+  height: 42em;
+  max-height: 42em;
+  overflow: auto;
+
+  .invoiceHeading {
+    background-color: $secondary-blue;
+    border-bottom: 1px solid $secondary-gray;
+
+    h3 {
+      display: inline-block;
+      position: relative;
+      left: 5.5%;
+      color: $white;
+    }
+
+    span {
+      float: right;
+      margin: 2%;
+      color: $white;
+    }
+  }
+
+  .invoice-jobs-view {
+    margin-left: 5%;
+
+    .invoice-work-entry {
+      margin-left: 5%;
+    }
+  }
+}

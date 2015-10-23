@@ -8232,6 +8232,30 @@ button.close {
 .work-entry .job-list {
   text-align: center; }
 
+.invoiceView {
+  margin: 5%;
+  border: 1px solid #AAAAAA;
+  background-color: #fff;
+  height: 42em;
+  max-height: 42em;
+  overflow: auto; }
+  .invoiceView .invoiceHeading {
+    background-color: #47A9CF;
+    border-bottom: 1px solid #AAAAAA; }
+    .invoiceView .invoiceHeading h3 {
+      display: inline-block;
+      position: relative;
+      left: 5.5%;
+      color: #fff; }
+    .invoiceView .invoiceHeading span {
+      float: right;
+      margin: 2%;
+      color: #fff; }
+  .invoiceView .invoice-jobs-view {
+    margin-left: 5%; }
+    .invoiceView .invoice-jobs-view .invoice-work-entry {
+      margin-left: 5%; }
+
 body, html {
   height: 100%;
   background-color: #F3F3F3;

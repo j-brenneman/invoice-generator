@@ -20,7 +20,7 @@ var NewWorkEntry = React.createClass({
       job: data[0].options[data[0].selectedIndex].getAttribute('data-id'),
       customer: this.props.stateData.selectedCustomer
     };
-    console.log(workEntry);
+    // console.log(workEntry);
     this.props.handlers.addWorkEntry(workEntry);
     data[0].selectedIndex = -1;
     data[1].value = null;

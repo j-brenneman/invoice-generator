@@ -10,6 +10,7 @@ var Jobs = require('./jobs.jsx');
 var NewJob = require('./newJob.jsx');
 var NewWorkEntry = require('./newWorkEntry.jsx');
 var WorkEntries = require('./workEntries.jsx');
+var Invoice = require('./invoice.jsx');
 
 
 var App = React.createClass({
@@ -70,11 +71,12 @@ var App = React.createClass({
                </div>
              : <div>
                 <NewWorkEntry stateData={this.state} handlers={this.workEntryHandlers}/>
-                <WorkEntries handlers={this.workEntryHandlers} workEntries={this.state.workEntries} jobs={this.state.jobs} selectedCustomer={this.state.selectedCustomer} />
+                <WorkEntries handlers={this.workEntryHandlers} workEntries={this.state.workEntries} jobs={this.state.jobs} selectedInvoice={this.state.selectedInvoice} selectedCustomer={this.state.selectedCustomer} />
                </div>
             }
           </div>
-          <div className="text-center col-md-6">
+          <div className="col-md-6">
+            <Invoice current={this.state.selectedInvoice} />
           </div>
         </div>
       </div>

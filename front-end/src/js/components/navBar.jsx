@@ -9,7 +9,6 @@ var NavBar = React.createClass({
         <div className="center-controller">
           <button className="btn btn-primary">New Invoice</button>
         </div>
-        <p className="user-indentifier">User</p>
       </div>
     )
   }
