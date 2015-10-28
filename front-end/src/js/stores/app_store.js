@@ -48,6 +48,17 @@ function Invoice() {
   this.grandTotal = '0.00';
 }
 
+var workEntryCalculations = function (workEntry) {
+  var subTotal = money.mul(workEntry.job.hourly, money.floatToAmount(workEntry.time/60));
+  var tax = money.percent(subTotal, workEntry.job.tax);
+  var total = money.add(subTotal, tax);
+  return {
+    subTotal: subTotal,
+    tax: tax,
+    total: total
+  }
+}
+
 // Cutomer add/delete
 var addCustomer = function (name) {
   var customer = new Customer(name);
@@ -76,22 +87,25 @@ var addJob = function (job) {
 
 var editJob = function (data) {
   appState.jobs[data.index] = data.job;
+  for (var i = 0; i <   appState.selectedInvoice.workEntries.length; i++) {
+    if(appState.selectedInvoice.workEntries[i].job._id === data.job._id){
+      var workEntry = appState.selectedInvoice.workEntries[i];
+      workEntry.job = data.job;
+      workEntry.financial = workEntryCalculations(workEntry);
+      var grandTotal = '0.00';
+      for (var i = 0; i < appState.selectedInvoice.workEntries.length; i++) {
+        grandTotal = money.add(appState.selectedInvoice.workEntries[i].financial.total, grandTotal);
+      }
+      appState.selectedInvoice.grandTotal = grandTotal;
+    }
+  }
 }
 
 var deleteJob = function (index) {
   appState.jobs.splice(index, 1);
 }
 
-var workEntryCalculations = function (workEntry) {
-  var subTotal = money.mul(workEntry.job.hourly, money.floatToAmount(workEntry.time/60));
-  var tax = money.percent(subTotal, workEntry.job.tax);
-  var total = money.add(subTotal, tax);
-  return {
-    subTotal: subTotal,
-    tax: tax,
-    total: total
-  }
-}
+
 
 // Work Entry CRUD
 var addWorkEntry = function (workEntry) {
