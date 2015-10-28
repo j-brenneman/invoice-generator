@@ -56,9 +56,31 @@ var appActions = {
       data: data
     })
   },
+  saveInvoice: function () {
+    AppDispatcher.handleViewAction({
+      actionType: appConstants.SAVE_INVOICE
+    })
+  },
+  selectInvoice: function (index) {
+    AppDispatcher.handleViewAction({
+      actionType: appConstants.SELECT_INVOICE,
+      data: index
+    })
+  },
+  newInvoice: function () {
+    AppDispatcher.handleViewAction({
+      actionType: appConstants.NEW_INVOICE
+    })
+  },
   jobANDworkToggle: function (boolean) {
     AppDispatcher.handleViewAction({
       actionType: appConstants.JOB_AND_WORK_TOGGLE,
+      data: boolean
+    })
+  },
+  invoiceToggle: function (boolean) {
+    AppDispatcher.handleViewAction({
+      actionType: appConstants.INVOICE_TOGGLE,
       data: boolean
     })
   }

@@ -9,8 +9,8 @@ var ControlBar = React.createClass({
           <button className="work-entry btn btn-primary" onClick={this.props.handlers.jobANDworkToggle.bind(this, false)}>Work Entry</button>
         </div>
         <div className="invoice col-md-6">
-          <button className="btn btn-primary">Save</button>
-          <button className="work-history btn btn-primary">Work History</button>
+          <button className="btn btn-primary" onClick={this.props.saveInvoice}>Save</button>
+          <button className="work-history btn btn-primary" onClick={this.props.handlers.invoiceToggle.bind(this, false)}>Work History</button>
         </div>
       </div>
     )

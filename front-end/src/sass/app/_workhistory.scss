@@ -1,0 +1,20 @@
+.work-history-view {
+  margin: 5%;
+
+  .work-history-info {
+    background-color: $white;
+
+    th {
+      text-align: center;
+    }
+
+    td {
+      text-align: center;
+
+      .view-invoice:hover {
+        color: $secondary-green;
+        cursor: pointer;
+      }
+    }
+  }
+}

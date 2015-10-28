@@ -13,7 +13,7 @@ var path = {
   HTML: 'src/index.html',
   SASS: ['src/sass/app/main.scss', 'src/sass/app/_colors.scss', 'src/sass/app/_sidebar.scss', 'src/sass/app/_navbar.scss',
          'src/sass/app/_newjob.scss', 'src/sass/app/_controlbar.scss', 'src/sass/app/_jobs.scss', 'src/sass/app/_neWorkentry.scss',
-         'src/sass/app/_invoice.scss', 'src/sass/app/_workentries.scss'],
+         'src/sass/app/_invoice.scss', 'src/sass/app/_workentries.scss', 'src/sass/app/_workhistory.scss'],
   MINIFIED_OUT: 'build.min.js',
   OUT: 'build.js',
   DEST: '../server/views',

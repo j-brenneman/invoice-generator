@@ -11,6 +11,7 @@ var NewJob = require('./newJob.jsx');
 var NewWorkEntry = require('./newWorkEntry.jsx');
 var WorkEntries = require('./workEntries.jsx');
 var Invoice = require('./invoice.jsx');
+var WorkHistory = require('./workHistory.jsx');
 
 
 var App = React.createClass({
@@ -66,6 +67,9 @@ var App = React.createClass({
   toggle: {
     jobANDworkToggle: function (boolean) {
       appActions.jobANDworkToggle(boolean);
+    },
+    invoiceToggle: function (boolean) {
+      appActions.invoiceToggle(boolean);
     }
   },
   render: function () {
@@ -73,8 +77,8 @@ var App = React.createClass({
       <div>
         <SideBar customers={this.state.customers} handlers={this.sideBarHandlers} />
         <div className="invoice-manager">
-          <NavBar selectedCustomer={this.state.selectedCustomer} />
-          <ControlBar handlers={this.toggle} />
+          <NavBar selectedCustomer={this.state.selectedCustomer} newInvoice={appActions.newInvoice} />
+          <ControlBar handlers={this.toggle} saveInvoice={appActions.saveInvoice} />
           <div className="new-job text-center col-md-6">
             {this.state.jobANDworkToggle
              ? <div>
@@ -88,7 +92,10 @@ var App = React.createClass({
             }
           </div>
           <div className="col-md-6">
-            <Invoice current={this.state.selectedInvoice} />
+            {this.state.invoiceToggle
+             ? <Invoice current={this.state.selectedInvoice} />
+             : <WorkHistory invoices={this.state.invoices} selectedCustomer={this.state.selectedCustomer} selectInvoice={appActions.selectInvoice} />
+            }
           </div>
         </div>
       </div>

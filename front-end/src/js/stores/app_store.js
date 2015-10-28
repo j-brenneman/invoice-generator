@@ -2,9 +2,9 @@ var AppDispatcher = require('../dispatcher/app_dispatcher');
 var appConstants = require('../constants/app_constants');
 var objectAssign = require('react/lib/Object.assign');
 var EventEmitter = require('events').EventEmitter;
+var serverCalls = require('../assets/serverCalls.js');
 var UUID = require('pure-uuid');
 var money = require('money-math');
-var serverCalls = require('../assets/serverCalls.js');
 
 
 var CHANGE_EVENT = 'change';
@@ -15,7 +15,8 @@ var appState = {
   invoices: [],
   selectedCustomer: {},
   selectedInvoice: new Invoice(),
-  jobANDworkToggle: true
+  jobANDworkToggle: true,
+  invoiceToggle: true
 };
 
 function Customer(name) {
@@ -43,10 +44,11 @@ function WorkEntry(workEntry) {
 }
 
 function Invoice() {
-  this.jobs = {};
   this.workEntries = [];
   this.customer = {};
   this.grandTotal = '0.00';
+  this.date = new Date();
+  this.hello = 'booyah';
 }
 
 var workEntryCalculations = function (workEntry) {
@@ -62,7 +64,6 @@ var workEntryCalculations = function (workEntry) {
 
 // Cutomer add/delete
 var addCustomer = function (name) {
-  console.log(appState);
   var customer = new Customer(name);
   appState.customers.push(customer);
   appState.selectedCustomer = customer;
@@ -80,7 +81,9 @@ var selectCustomer = function (_id) {
     })[0]
   );
   appState.selectedCustomer = customerSelect;
+  appState.selectedInvoice = new Invoice();
   appState.selectedInvoice.customer = customerSelect;
+  appState.invoiceToggle = true;
 }
 
 // Job CRUD
@@ -142,9 +145,30 @@ var deleteWorkEntry = function (index) {
   appState.selectedInvoice.grandTotal = grandTotal;
 }
 
+// Invoice save/view/delete
+var saveInvoice = function () {
+  appState.selectedInvoice.date = new Date();
+  appState.invoices.push(appState.selectedInvoice);
+  appState.invoiceToggle = false;
+}
+
+var selectInvoice = function (index) {
+  appState.selectedInvoice = appState.invoices[index];
+  appState.invoiceToggle = true;
+}
+
+var newInvoice = function () {
+  appState.selectedInvoice = new Invoice();
+  appState.selectedInvoice.customer = appState.selectedCustomer;
+}
+
 // Toggle States
 var toggleJobANDwork = function (boolean) {
   appState.jobANDworkToggle = boolean;
+}
+
+var invoiceToggle = function (boolean) {
+  appState.invoiceToggle = boolean;
 }
 
 // InitialData
@@ -206,8 +230,24 @@ AppDispatcher.register(function (payload) {
       initialData(action.data);
       appStore.emit(CHANGE_EVENT);
       break;
+    case appConstants.SAVE_INVOICE:
+      saveInvoice();
+      appStore.emit(CHANGE_EVENT);
+      break;
+    case appConstants.SELECT_INVOICE:
+      selectInvoice(action.data);
+      appStore.emit(CHANGE_EVENT);
+      break;
+    case appConstants.NEW_INVOICE:
+      newInvoice();
+      appStore.emit(CHANGE_EVENT);
+      break;
     case appConstants.JOB_AND_WORK_TOGGLE:
       toggleJobANDwork(action.data);
+      appStore.emit(CHANGE_EVENT);
+      break;
+    case appConstants.INVOICE_TOGGLE:
+      invoiceToggle(action.data);
       appStore.emit(CHANGE_EVENT);
       break;
     default:

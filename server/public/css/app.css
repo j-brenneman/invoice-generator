@@ -8169,7 +8169,7 @@ button.close {
       border: 2px solid #AAAAAA;
       background-color: #47A9CF; }
     .navbar .center-controller button:hover {
-      color: #922729;
+      color: #2ECC71;
       background-color: #2f8fb4;
       opacity: 0.8; }
 
@@ -8289,6 +8289,18 @@ button.close {
       border-bottom: 1px solid #AAAAAA; }
       .invoiceView .invoice-jobs-view .invoice-work-entry .job-totals {
         margin-top: 2%; }
+
+.work-history-view {
+  margin: 5%; }
+  .work-history-view .work-history-info {
+    background-color: #fff; }
+    .work-history-view .work-history-info th {
+      text-align: center; }
+    .work-history-view .work-history-info td {
+      text-align: center; }
+      .work-history-view .work-history-info td .view-invoice:hover {
+        color: #2ECC71;
+        cursor: pointer; }
 
 body, html {
   height: 100%;
