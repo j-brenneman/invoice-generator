@@ -18,6 +18,12 @@ var App = React.createClass({
   getInitialState:function () {
     return appStore.getCurrentState();
   },
+  componentWillMount: function () {
+    appStore.setInitialAppState()
+    .then(function (data) {
+      appActions.initialData(data);
+    })
+  },
   componentDidMount: function () {
     appStore.addChangeListener(this._onChange);
   },

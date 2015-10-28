@@ -50,6 +50,12 @@ var appActions = {
       data: index
     })
   },
+  initialData: function (data) {
+    AppDispatcher.handleViewAction({
+      actionType: appConstants.INITIAL_DATA,
+      data: data
+    })
+  },
   jobANDworkToggle: function (boolean) {
     AppDispatcher.handleViewAction({
       actionType: appConstants.JOB_AND_WORK_TOGGLE,

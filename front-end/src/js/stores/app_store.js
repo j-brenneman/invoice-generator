@@ -4,6 +4,7 @@ var objectAssign = require('react/lib/Object.assign');
 var EventEmitter = require('events').EventEmitter;
 var UUID = require('pure-uuid');
 var money = require('money-math');
+var serverCalls = require('../assets/serverCalls.js');
 
 
 var CHANGE_EVENT = 'change';
@@ -61,11 +62,13 @@ var workEntryCalculations = function (workEntry) {
 
 // Cutomer add/delete
 var addCustomer = function (name) {
+  console.log(appState);
   var customer = new Customer(name);
   appState.customers.push(customer);
   appState.selectedCustomer = customer;
   appState.selectedInvoice = new Invoice();
   appState.selectedInvoice.customer  = customer;
+  serverCalls.updateData(appState)
 }
 
 var selectCustomer = function (_id) {
@@ -144,6 +147,11 @@ var toggleJobANDwork = function (boolean) {
   appState.jobANDworkToggle = boolean;
 }
 
+// InitialData
+var initialData = function (data) {
+  appState = data;
+}
+
 var appStore = objectAssign({}, EventEmitter.prototype, {
   addChangeListener: function (cb) {
     this.on(CHANGE_EVENT, cb);
@@ -153,6 +161,9 @@ var appStore = objectAssign({}, EventEmitter.prototype, {
   },
   getCurrentState: function () {
     return appState;
+  },
+  setInitialAppState: function () {
+    return serverCalls.initialData(appState)
   }
 });
 
@@ -189,6 +200,10 @@ AppDispatcher.register(function (payload) {
       break;
     case appConstants.DELETE_WORK_ENTRY:
       deleteWorkEntry(action.data);
+      appStore.emit(CHANGE_EVENT);
+      break;
+    case appConstants.INITIAL_DATA:
+      initialData(action.data);
       appStore.emit(CHANGE_EVENT);
       break;
     case appConstants.JOB_AND_WORK_TOGGLE:
