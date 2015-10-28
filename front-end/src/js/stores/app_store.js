@@ -5,6 +5,7 @@ var EventEmitter = require('events').EventEmitter;
 var serverCalls = require('../assets/serverCalls.js');
 var UUID = require('pure-uuid');
 var money = require('money-math');
+var dateConversion = require('../assets/dateConversion.js');
 
 
 var CHANGE_EVENT = 'change';
@@ -48,7 +49,7 @@ function Invoice() {
   this.customer = {};
   this.grandTotal = '0.00';
   this.date = new Date();
-  this.hello = 'booyah';
+  this._id = JSON.stringify(new UUID(1));
 }
 
 var workEntryCalculations = function (workEntry) {
@@ -84,11 +85,13 @@ var selectCustomer = function (_id) {
   appState.selectedInvoice = new Invoice();
   appState.selectedInvoice.customer = customerSelect;
   appState.invoiceToggle = true;
+  serverCalls.updateData(appState);
 }
 
 // Job CRUD
 var addJob = function (job) {
   appState.jobs.push(new Job(job));
+  serverCalls.updateData(appState);
 }
 
 var editJob = function (data) {
@@ -105,10 +108,12 @@ var editJob = function (data) {
       appState.selectedInvoice.grandTotal = grandTotal;
     }
   }
+  serverCalls.updateData(appState)
 }
 
 var deleteJob = function (index) {
   appState.jobs.splice(index, 1);
+  serverCalls.updateData(appState)
 }
 
 // Work Entry CRUD
@@ -122,6 +127,7 @@ var addWorkEntry = function (workEntry) {
   appState.selectedInvoice.grandTotal = money.add(appState.selectedInvoice.grandTotal, workEntry.financial.total);
   var newWorkEntry = new WorkEntry(workEntry);
   appState.selectedInvoice.workEntries.push(newWorkEntry);
+  serverCalls.updateData(appState)
 }
 
 var editWorkEntry = function (input) {
@@ -134,6 +140,7 @@ var editWorkEntry = function (input) {
     grandTotal = money.add(appState.selectedInvoice.workEntries[i].financial.total, grandTotal);
   }
   appState.selectedInvoice.grandTotal = grandTotal;
+  serverCalls.updateData(appState)
 }
 
 var deleteWorkEntry = function (index) {
@@ -143,23 +150,29 @@ var deleteWorkEntry = function (index) {
     grandTotal = money.add(appState.selectedInvoice.workEntries[i].financial.total, grandTotal);
   }
   appState.selectedInvoice.grandTotal = grandTotal;
+  serverCalls.updateData(appState)
 }
 
 // Invoice save/view/delete
 var saveInvoice = function () {
-  appState.selectedInvoice.date = new Date();
-  appState.invoices.push(appState.selectedInvoice);
+  var date = new Date().toString().split(' ');
+  appState.selectedInvoice.date = dateConversion[date[1]][1] +' '+ date[2] +', '+ date[3];
+  appState.invoices.push(appState.selectedInvoice)
   appState.invoiceToggle = false;
+  serverCalls.updateData(appState)
 }
 
 var selectInvoice = function (index) {
   appState.selectedInvoice = appState.invoices[index];
   appState.invoiceToggle = true;
+  serverCalls.updateData(appState)
 }
 
 var newInvoice = function () {
   appState.selectedInvoice = new Invoice();
   appState.selectedInvoice.customer = appState.selectedCustomer;
+  appState.invoiceToggle = true;
+  serverCalls.updateData(appState)
 }
 
 // Toggle States

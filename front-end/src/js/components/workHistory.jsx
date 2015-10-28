@@ -19,7 +19,7 @@ var WorkHistory = React.createClass({
             {this.customerHistory().map(function (invoice, i) {
               return (
                 <tr key={i + invoice.customer._id}>
-                  <td>{i +1}</td><td>Date</td><td onClick={this.props.selectInvoice.bind(this, i)}><span className="fa fa-file-o view-invoice"></span></td>
+                  <td>{i +1}</td><td>{invoice.date}</td><td onClick={this.props.selectInvoice.bind(this, i)}><span className="fa fa-file-o view-invoice"></span></td>
                 </tr>
               )
             }, this)}
