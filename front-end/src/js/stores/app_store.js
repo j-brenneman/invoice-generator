@@ -105,8 +105,6 @@ var deleteJob = function (index) {
   appState.jobs.splice(index, 1);
 }
 
-
-
 // Work Entry CRUD
 var addWorkEntry = function (workEntry) {
   workEntry.job = appState.jobs.filter(function (job) {

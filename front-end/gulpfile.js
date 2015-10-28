@@ -16,10 +16,10 @@ var path = {
          'src/sass/app/_invoice.scss', 'src/sass/app/_workentries.scss'],
   MINIFIED_OUT: 'build.min.js',
   OUT: 'build.js',
-  DEST: 'dist',
-  DEST_BUILD: 'dist/build',
-  DEST_SRC: 'dist/src',
-  DEST_CSS: 'dist/src/css',
+  DEST: '../server/views',
+  DEST_BUILD: '../server/public/javascripts/build',
+  DEST_SRC: '../server/public/javascripts/src',
+  DEST_CSS: '../server/public/css',
   ENTRY_POINT: './src/js/components/app.jsx'
 };
 
@@ -74,7 +74,7 @@ gulp.task('build', function () {
 gulp.task('replaceHTML', function () {
   gulp.src(path.HTML)
     .pipe(htmlreplace({
-      'js': 'build/' + path.MINIFIED_OUT
+      'js': '/javascripts/build/' + path.MINIFIED_OUT
     }))
     .pipe(gulp.dest(path.DEST));
 });
