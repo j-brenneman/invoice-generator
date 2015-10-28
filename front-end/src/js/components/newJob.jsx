@@ -1,5 +1,6 @@
 var React = require('react');
 var validations = require('../assets/validations.js');
+var format = require('../assets/numberFormat.js');
 
 var NewJob = React.createClass({
 
@@ -8,8 +9,8 @@ var NewJob = React.createClass({
     var submitButton = document.getElementById('newJobSubmit');
     var job = {
       title: data[0].value,
-      hourly: data[1].value,
-      tax: data[2].value,
+      hourly: format.hourly(data[1].value),
+      tax: format.tax(data[2].value),
       customer: this.props.selectedCustomer
     };
     this.props.handlers.addJob(job);

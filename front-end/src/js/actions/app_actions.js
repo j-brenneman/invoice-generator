@@ -38,6 +38,18 @@ var appActions = {
       data: workEntry
     })
   },
+  editWorkEntry: function (input) {
+    AppDispatcher.handleViewAction({
+      actionType: appConstants.EDIT_WORK_ENTRY,
+      data: input
+    })
+  },
+  deleteWorkEntry: function (index) {
+    AppDispatcher.handleViewAction({
+      actionType: appConstants.DELETE_WORK_ENTRY,
+      data: index
+    })
+  },
   jobANDworkToggle: function (boolean) {
     AppDispatcher.handleViewAction({
       actionType: appConstants.JOB_AND_WORK_TOGGLE,

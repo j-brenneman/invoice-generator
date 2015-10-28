@@ -3,6 +3,7 @@ var appConstants = require('../constants/app_constants');
 var objectAssign = require('react/lib/Object.assign');
 var EventEmitter = require('events').EventEmitter;
 var UUID = require('pure-uuid');
+var money = require('money-math');
 
 
 var CHANGE_EVENT = 'change';
@@ -10,7 +11,6 @@ var CHANGE_EVENT = 'change';
 var appState = {
   customers: [],
   jobs: [],
-  workEntries: [],
   invoices: [],
   selectedCustomer: {},
   selectedInvoice: new Invoice(),
@@ -36,6 +36,7 @@ function WorkEntry(workEntry) {
   this.time = workEntry.time;
   this.summary = workEntry.summary;
   this.job = workEntry.job;
+  this.financial = workEntry.financial;
   this.customer = workEntry.customer;
   this._id = JSON.stringify(new UUID(1));
 }
@@ -44,15 +45,7 @@ function Invoice() {
   this.jobs = {};
   this.workEntries = [];
   this.customer = {};
-}
-
-Invoice.prototype.findCustomerWork = function (workEntry) {
-  for (var j = 0; j < appState.jobs.length; j++) {
-    if(appState.jobs[j]._id === workEntry.job){
-      workEntry.job = appState.jobs[j];
-      this.workEntries.push(workEntry);
-    }
-  }
+  this.grandTotal = '0.00';
 }
 
 // Cutomer add/delete
@@ -61,7 +54,7 @@ var addCustomer = function (name) {
   appState.customers.push(customer);
   appState.selectedCustomer = customer;
   appState.selectedInvoice = new Invoice();
-  appState.selectedInvoice.customer  = customer;  
+  appState.selectedInvoice.customer  = customer;
 }
 
 var selectCustomer = function (_id) {
@@ -70,9 +63,10 @@ var selectCustomer = function (_id) {
       if(_id === customer._id){
         return customer
       }
-    })[0]);
-    appState.selectedCustomer = customerSelect;
-    appState.selectedInvoice;
+    })[0]
+  );
+  appState.selectedCustomer = customerSelect;
+  appState.selectedInvoice.customer = customerSelect;
 }
 
 // Job CRUD
@@ -88,18 +82,49 @@ var deleteJob = function (index) {
   appState.jobs.splice(index, 1);
 }
 
+var workEntryCalculations = function (workEntry) {
+  var subTotal = money.mul(workEntry.job.hourly, money.floatToAmount(workEntry.time/60));
+  var tax = money.percent(subTotal, workEntry.job.tax);
+  var total = money.add(subTotal, tax);
+  return {
+    subTotal: subTotal,
+    tax: tax,
+    total: total
+  }
+}
+
 // Work Entry CRUD
 var addWorkEntry = function (workEntry) {
-  var newWorkEntry = new WorkEntry(workEntry);
-  appState.workEntries.push(newWorkEntry);
-  var associatedJob = (
-    appState.jobs.filter(function (job) {
-    if(job._id === newWorkEntry.job){
-      return job
+  workEntry.job = appState.jobs.filter(function (job) {
+    if(job._id === workEntry.job){
+      return job;
     }
-  })[0])
-  appState.selectedInvoice.jobs[associatedJob._id] = associatedJob;
-  appState.selectedInvoice.findCustomerWork(newWorkEntry);
+  })[0];
+  workEntry.financial = workEntryCalculations(workEntry);
+  appState.selectedInvoice.grandTotal = money.add(appState.selectedInvoice.grandTotal, workEntry.financial.total);
+  var newWorkEntry = new WorkEntry(workEntry);
+  appState.selectedInvoice.workEntries.push(newWorkEntry);
+}
+
+var editWorkEntry = function (input) {
+  var workEntry = appState.selectedInvoice.workEntries[input.index];
+  workEntry.time = input.time;
+  workEntry.summary = input.summary;
+  workEntry.financial = workEntryCalculations(workEntry);
+  var grandTotal = '0.00';
+  for (var i = 0; i < appState.selectedInvoice.workEntries.length; i++) {
+    grandTotal = money.add(appState.selectedInvoice.workEntries[i].financial.total, grandTotal);
+  }
+  appState.selectedInvoice.grandTotal = grandTotal;
+}
+
+var deleteWorkEntry = function (index) {
+  appState.selectedInvoice.workEntries.splice(index, 1);
+  var grandTotal = '0.00';
+  for (var i = 0; i < appState.selectedInvoice.workEntries.length; i++) {
+    grandTotal = money.add(appState.selectedInvoice.workEntries[i].financial.total, grandTotal);
+  }
+  appState.selectedInvoice.grandTotal = grandTotal;
 }
 
 // Toggle States
@@ -144,6 +169,14 @@ AppDispatcher.register(function (payload) {
       break;
     case appConstants.ADD_WORK_ENRTY:
       addWorkEntry(action.data);
+      appStore.emit(CHANGE_EVENT);
+      break;
+    case appConstants.EDIT_WORK_ENTRY:
+      editWorkEntry(action.data);
+      appStore.emit(CHANGE_EVENT);
+      break;
+    case appConstants.DELETE_WORK_ENTRY:
+      deleteWorkEntry(action.data);
       appStore.emit(CHANGE_EVENT);
       break;
     case appConstants.JOB_AND_WORK_TOGGLE:

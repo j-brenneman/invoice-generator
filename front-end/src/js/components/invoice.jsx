@@ -1,35 +1,37 @@
 var React = require('react');
+var money = require('money-math');
 
 var Invoice = React.createClass({
-
-  calculations: function () {
-    var jobTotals = this.props.current.workEntries.map(function (workEntry) {
-      var hourly = workEntry.job.hourly.replace('.', '') + '0';
-      var tax = workEntry.job.tax.replace('.', '') + '0';
-      console.log(parseInt(hourly), parseInt(tax));
-      var subTotal = (parseInt(hourly) * parseInt(workEntry.time))/60;
-      var total = (subTotal + (subTotal * parseInt(tax)))/100
-      return {
-        subTotal: subTotal/100,
-        tax: (subTotal * parseInt(tax))/100,
-        total: total
-      }
-    })
-    console.log(jobTotals);
+  componentWillReceiveProps: function(nextProps) {
+    this.props.current.grandTotal = nextProps.current.grandTotal
   },
   render: function () {
     return (
-      <div className="invoiceView">
-        <div className="text-center invoiceHeading">
-          <h3>Invoice</h3>
-          <span>{this.props.current.customer.name}</span>
+      <div className="invoiceView row">
+        <div className="row invoiceHeading">
+          <div className="text-center col-md-4">
+            <h3>Invoice</h3>
+          </div>
+          <div className="col-md-8 customer-total">
+            <p>{this.props.current.customer.name ? 'Customer: ' + this.props.current.customer.name : null}</p>
+            <p>{'Grand Total: ' + '$' +this.props.current.grandTotal}</p>
+          </div>
         </div>
         <div className="invoice-jobs-view row">
-          <h4>{Object.keys(this.props.current.jobs).length > 1 ? 'Jobs' : 'Job'}</h4>
-          {this.props.current.workEntries.map(function (workEntry) {
-            return <div className="invoice-work-entry" onClick={this.calculations}>
-                      <p>{workEntry.job.title +' '+ workEntry.date.displayDate}</p>
-                      <p><i>{workEntry.summary}</i></p>
+          {this.props.current.workEntries.map(function (workEntry, i) {
+            return <div key={workEntry.date.timeStamp + i} className="invoice-work-entry">
+                      <div className="row">
+                        <div className="col-md-6">
+                          <h4><strong>{workEntry.job.title}</strong><span>{' ('+ workEntry.time + ' Mins)'}</span></h4>
+                          <p>{workEntry.date.displayDate}</p>
+                          <p><i>{workEntry.summary}</i></p>
+                        </div>
+                        <div className="job-totals col-md-6">
+                          <p>{'Subtotal: ' +'$'+ workEntry.financial.subTotal}</p>
+                          <p>{'Tax: ' +'$'+ workEntry.financial.tax}</p>
+                          <p>{'Total: ' +'$'+ workEntry.financial.total}</p>
+                        </div>
+                      </div>
                    </div>
           }, this)}
         </div>

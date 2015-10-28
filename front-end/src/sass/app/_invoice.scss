@@ -4,31 +4,36 @@
   background-color: $white;
   height: 42em;
   max-height: 42em;
-  overflow: auto;
+  overflow: hidden;
 
   .invoiceHeading {
     background-color: $secondary-blue;
     border-bottom: 1px solid $secondary-gray;
 
     h3 {
-      display: inline-block;
-      position: relative;
-      left: 5.5%;
       color: $white;
     }
 
-    span {
-      float: right;
-      margin: 2%;
+    .customer-total {
+      margin-top: 1%;
+      text-align: center;
       color: $white;
     }
   }
 
   .invoice-jobs-view {
-    margin-left: 5%;
+    padding-left: 5%;
+    margin-right: 2%;
+    max-height: 40em;
+    overflow: auto;
 
     .invoice-work-entry {
-      margin-left: 5%;
+      padding-left: 5%;
+      border-bottom: 1px solid $secondary-gray;
+
+      .job-totals {
+        margin-top: 2%;
+      }
     }
   }
 }

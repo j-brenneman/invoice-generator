@@ -49,6 +49,12 @@ var App = React.createClass({
   workEntryHandlers: {
     addWorkEntry: function (workEntry) {
       appActions.addWorkEntry(workEntry);
+    },
+    editWorkEntry: function (input) {
+      appActions.editWorkEntry(input);
+    },
+    deleteWorkEntry: function (index) {
+      appActions.deleteWorkEntry(index);
     }
   },
   toggle: {

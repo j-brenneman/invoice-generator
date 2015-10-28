@@ -8232,29 +8232,63 @@ button.close {
 .work-entry .job-list {
   text-align: center; }
 
+.work-entries {
+  margin-top: 5%; }
+  .work-entries .entry-info {
+    background-color: #fff; }
+    .work-entries .entry-info th {
+      text-align: center; }
+    .work-entries .entry-info .edit-button:hover {
+      color: #2ECC71;
+      cursor: pointer; }
+    .work-entries .entry-info .check-button {
+      margin: 5%;
+      float: left;
+      vertical-align: top; }
+    .work-entries .entry-info .check-button:hover {
+      color: #2ECC71;
+      cursor: pointer; }
+    .work-entries .entry-info .minus-button {
+      margin: 5%;
+      float: right;
+      vertical-align: bottom; }
+    .work-entries .entry-info .minus-button:hover {
+      color: #922729;
+      cursor: pointer; }
+    .work-entries .entry-info td input {
+      border: 2px solid #47A9CF;
+      padding: 2%;
+      width: 100%;
+      vertical-align: middle; }
+    .work-entries .entry-info td textarea {
+      border: 2px solid #47A9CF; }
+
 .invoiceView {
   margin: 5%;
   border: 1px solid #AAAAAA;
   background-color: #fff;
   height: 42em;
   max-height: 42em;
-  overflow: auto; }
+  overflow: hidden; }
   .invoiceView .invoiceHeading {
     background-color: #47A9CF;
     border-bottom: 1px solid #AAAAAA; }
     .invoiceView .invoiceHeading h3 {
-      display: inline-block;
-      position: relative;
-      left: 5.5%;
       color: #fff; }
-    .invoiceView .invoiceHeading span {
-      float: right;
-      margin: 2%;
+    .invoiceView .invoiceHeading .customer-total {
+      margin-top: 1%;
+      text-align: center;
       color: #fff; }
   .invoiceView .invoice-jobs-view {
-    margin-left: 5%; }
+    padding-left: 5%;
+    margin-right: 2%;
+    max-height: 40em;
+    overflow: auto; }
     .invoiceView .invoice-jobs-view .invoice-work-entry {
-      margin-left: 5%; }
+      padding-left: 5%;
+      border-bottom: 1px solid #AAAAAA; }
+      .invoiceView .invoice-jobs-view .invoice-work-entry .job-totals {
+        margin-top: 2%; }
 
 body, html {
   height: 100%;
